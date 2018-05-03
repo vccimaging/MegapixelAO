@@ -11,7 +11,7 @@ The code is written (naively) with C++, CUDA, and some MATLAB scripts. OpenCV an
 #### Prerequisites
 
 - CUDA Toolkit 8.0 or above;
-- CMake 2.8 or above;
+- CMake 2.8 or above; (We tested on CMake 3.10)
 - OpenCV 3.0 or above (with CUDA-support is necessary; with Qt-support is preferable);
 - GLFW 3.2.1 or above;
 - FlyCapture2 SDK from PointGrey;
@@ -78,6 +78,13 @@ Steps:
 
   After you have run `settings` and `AO_xy_alignment`, and have the configurations saved in `./temp`. you can run `AO_closedloop` freely.
 
+#### Notes
+
+Default camera capture mode is software trigger; you can switch to hardware trigger by:
+
+- Feed an input synchronization signal to the camera;
+- Comment out in code and recompile.
+
 #### Projects
 
 - `settings` sets the shutter time (`shutter_time.txt`), auto-detects the SLM size (`SLM_sizes.txt`) and sensor size (`sensor_sizes.txt`), and writes the results to `./temp`.
@@ -109,14 +116,14 @@ Steps:
 #### Tests
 
 - `background_SLM` demonstrates how to utilize CUDA-OpenGL interop to render an image on SLM. You will see, on the SLM:
-![test_SLM](../imgs/test_background_SLM.jpg)
+  ![test_SLM](../imgs/test_background_SLM.jpg)
 
 - `hardware_trigger` tests if your sensor is hardware synchronized to the SLM. Note:
   - BNC cable for SLM. The cable will output a V-Sync signal (60 Hz fps) from your PC. For Holoeye it is an *undocumented option*: ask the Holoeye guys for a guide.
   - GPIO cable for the sensor. You need to choose a corresponding GPIO cable for your specific camera model. We used [8 pin GPIO](https://www.ptgrey.com/1-meter-circular-8-pin-pre-wired-gpio-hirose-connector).
   - Check what type of trigger you need. In code `flycapture2_helper_functions.h`, we configure the hardware synchronization to be mode 14 through GPIO3. See PointGrey technical paper for a full reference (for our specific camera model GS3-U3-15S5M-C, see P52 of [GS3 Tech Manual](https://www.ptgrey.com/support/downloads/10125)).
 - `shader` tests if our shaders work. You will see, on the SLM:
-![test_shader](../imgs/test_shader.jpg)
+  ![test_shader](../imgs/test_shader.jpg)
 
 - `solver_accuracy` tests the numerical accuracy between CPU and GPU:
   - `test_fista_rof` implements the ROF denoising method using the famous [FISTA algorithm](https://people.rennes.inria.fr/Cedric.Herzet/Cedric.Herzet/Sparse_Seminar/Entrees/2012/11/12_A_Fast_Iterative_Shrinkage-Thresholding_Algorithmfor_Linear_Inverse_Problems_(A._Beck,_M._Teboulle)_files/Breck_2009.pdf); this feature is undocumented in our paper, but we provide it for your reproduction. Run:
@@ -125,4 +132,6 @@ Steps:
   - `test_solver_accuracy` tests our wavefront solver. Run:
     - The binary `test_solver_accuracy` first;
     - Then `test_wavefront_solver.m` to visualize results in MATLAB.
+
+    Due to floating point errors, the two solutions are not exactly the same.
 

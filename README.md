@@ -12,7 +12,7 @@ King Abdullah University of Science and Technology (KAUST)
 This repository contains:
 
 - An improved version of the wavefront solver described in [Ultra-high resolution coded wavefront sensor](https://www.osapublishing.org/abstract.cfm?uri=oe-25-12-13736) in MATLAB and CUDA:
-  - Linearized version, solver by either ADMM or conjugate gradient;
+  - Linearized version, solver is either ADMM or conjugate gradient;
   - Pyramid version.
 - Adaptive optics (AO) control code in C++ and CUDA:
 
@@ -41,9 +41,22 @@ Our code has been tested on Ubuntu 16.04 and Windows 10. In theory it should als
 
 For MATLAB code, just plug & play. 
 
-Please refer to `./cws_and_ao/README.md` for a full installation guide on library dependency and how to compile the C++ and CUDA code.
+Please refer to `./ao/README.md` for a full installation guide on library dependency and how to compile the C++ and CUDA code.
 
 ### Citation
+
+```
+@article{wang2018megapixel,
+  title = {Megapixel adaptive optics: towards correcting large-scale distortions in computational cameras},
+  author = {Wang, Congli and Fu, Qiang and Dun, Xiong and Heidrich, Wolfgang},
+  journal = {ACM Transactions on Graphics (Proc. SIGGRAPH)},
+  volume = {37},
+  number = {4},
+  pages = {},
+  year = {2018},
+  publisher={ACM}
+}
+```
 
 ```
 @article{wang2017ultra,
