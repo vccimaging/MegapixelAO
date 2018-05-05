@@ -52,7 +52,7 @@ Please refer to `./ao/README.md` for a full installation guide on library depend
   journal = {ACM Transactions on Graphics (Proc. SIGGRAPH)},
   volume = {37},
   number = {4},
-  pages = {},
+  pages = {115},
   year = {2018},
   publisher={ACM}
 }
