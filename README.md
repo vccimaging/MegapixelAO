@@ -43,9 +43,13 @@ For MATLAB code, just plug & play.
 
 Please refer to `./ao/README.md` for a full installation guide on library dependency and how to compile the C++ and CUDA code.
 
+### Related
+
+For our latest solver, refer to repository https://github.com/vccimaging/PhaseIntensityMicroscope.
+
 ### Citation
 
-```
+```bibtex
 @article{wang2018megapixel,
   title = {Megapixel adaptive optics: towards correcting large-scale distortions in computational cameras},
   author = {Wang, Congli and Fu, Qiang and Dun, Xiong and Heidrich, Wolfgang},
@@ -58,7 +62,7 @@ Please refer to `./ao/README.md` for a full installation guide on library depend
 }
 ```
 
-```
+```bibtex
 @article{wang2017ultra,
   title={Ultra-high resolution coded wavefront sensor},
   author={Wang, Congli and Dun, Xiong and Fu, Qiang and Heidrich, Wolfgang},
